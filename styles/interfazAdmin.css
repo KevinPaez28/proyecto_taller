@@ -1,0 +1,67 @@
+@import url('login.css');
+*{
+  margin:0;
+  padding:0;
+  box-sizing: border-box;
+}
+body{
+  display: flex;
+}
+.lateral{
+  width: 20%;
+  height: 100vh;
+  background-color: #38528a;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.lateral__title{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  color: rgb(219, 219, 219);
+  font-family: "Lato", sans-serif;
+  font-size: 0.9rem;
+  list-style-type: none;
+}
+.lateral__menu{
+  display: flex;
+  width: 100%;
+  height: 5vh;
+  align-items: center;
+  gap: 10px;
+}
+.lateral__border{
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.lateral__icons{
+font-size: 25px;
+color: rgb(25, 25, 26);
+}
+.lateral__titletext{
+  font-size: 30px;
+  text-decoration: none;
+  color: rgb(0, 0, 0);
+
+}
+.lateral__text{
+  font-size: 18px;
+  text-decoration: none;
+  color: rgb(255, 255, 255);
+  font-family: "Lato", sans-serif;
+  font-size: 0.9rem;
+  list-style-type: none;
+  font-weight: 600;
+}
+
+.contentadmin{
+  width: 80%;
+  height: 100vh;
+  display: flex;
+}
+
