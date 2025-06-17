@@ -1,16 +1,12 @@
 @import url('login.css');
-*{
-  margin:0;
-  padding:0;
-  box-sizing: border-box;
-}
+@import url('variables.css');
 .registrarse{
  width: 100%;
  height: 90vh;
  display: flex;
  align-items: center;
  justify-content: space-around;
- gap: 30px;
+ gap: 10px;
 }
 .form__card{
   height: 100%;
@@ -19,12 +15,25 @@
  flex-direction: row-reverse;
  align-items: center;
 }
+.form__grupo{
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+.form__input{
+  border-radius: 5px;
+  height: 25px;
+  padding: 3px;
+  border: none;
+}
 .formulario{
   display: flex;
   flex-direction: column;
   gap: 30px;
   font-size: 20px;
   padding: 40px;
+  background-color: var(--color--fondologin);
+  border-radius:20px ;
 }
 .button{
   display: flex;
@@ -35,12 +44,12 @@
  height: 5vh;
  text-align: center;
  border-radius: 50px;
- background-color: #38528a;
+ background-color: var(--color--principal);
  color: rgb(255, 255, 255);
 }
 .button__form--diseño_fondo:hover{
   box-shadow: 0 4px 8px rgba(0, 0, 0, 2);
-  background-color: #b9bdc7;
+  background-color:var(--color--hoverForm);
   transform: translateY(-2px); 
   border: none;
   color: black;

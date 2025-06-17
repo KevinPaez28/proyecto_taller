@@ -1,0 +1,16 @@
+*{
+  margin:0;
+  padding:0;
+  box-sizing: border-box;
+}
+:root{
+  --color--principal:#38528a;
+  --color--hoverForm: #b9bdc7;
+  --color--itemsMenuloginhover:#000000c0;
+  --color--inputlogin:rgba(253, 253, 253, 0.712);
+  --color--principaltextheader:rgb(243, 243, 243);
+  --color--negroFuente:#000;
+  --color--buttonheader:#cbcfd2;
+  --color--blancocontent:#F5F5F5;
+  --color--fondologin: rgba(171, 171, 171, 0.715);
+}
