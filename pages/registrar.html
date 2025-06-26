@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -26,39 +26,47 @@
       <p class="content__text">"Bienvenido al taller digital: accede para acelerar el servicio y cuidar tu moto al máximo."</p>
     </div>
     <div class = "form__card">
-     <form action="#" method="POST" class="formulario">
-       <div class = "title">
-        <p class = "form__text">Register</p>
-       </div>
+     <form id="formUsuario" class="formulario">
+        <div class="title">
+          <p class="form__text">Register</p>
+        </div>
 
         <div class="form__grupo">
           <label for="nombre">Nombre completo:</label>
-          <input type="text" class="form__input" placeholder="Nombre completo">
+          <input type="text" id="nombre" class="form__input" placeholder="Nombre completo">
         </div>
+
         <div class="form__grupo">
-          <label for="nombre">Correo electrónico:</label>
-          <input type="text" class="form__input" placeholder="Correo electrónico">
+          <label for="correo">Correo electrónico:</label>
+          <input type="email" id="correo" class="form__input" placeholder="Correo electrónico">
         </div>
+
         <div class="form__grupo">
-          <label for="usuario">Telefono:</label>
-          <input type="number"class="form__input" placeholder="Telefono">
+          <label for="telefono">Teléfono:</label>
+          <input type="number" id="telefono" class="form__input" placeholder="Teléfono">
         </div>
+
         <div class="form__grupo">
           <label for="usuario">Nombre de usuario:</label>
-          <input type="text"class="form__input" placeholder="Nombre Usuario">
+          <input type="text" id="usuario" class="form__input" placeholder="Nombre Usuario">
         </div>
+
         <div class="form__grupo">
-          <label for="contraseña">Contraseña:</label>
-          <input type="password"class="form__input" placeholder="Contraseña">
+          <label for="contrasena">Contraseña:</label>
+          <input type="password" id="contrasena" class="form__input" placeholder="Contraseña">
         </div>
+
+        <div class="form__grupo">
+          <label for="cedula">Cédula:</label>
+          <input type="text" id="cedula" class="form__input" placeholder="Cédula">
+        </div>
+
         <div class="form__grupo button">
           <button type="submit" class="button__form button__form--diseño_fondo">Registrarse</button>
         </div>
       </form>
     </div>
   </div>
-
- 
-
+  <script src="/Javascript/appRegistrarUsuarios.js" type="module"></script>
 </body>
 </html>

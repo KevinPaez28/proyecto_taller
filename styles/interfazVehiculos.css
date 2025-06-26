@@ -1,0 +1,94 @@
+@import url("interfazAdmin.css");
+@import url('variables.css');
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Cardo:ital,wght@0,400;0,700;1,400&family=Comfortaa:wght@300..700&family=Comic+Relief:wght@400;700&family=Edu+NSW+ACT+Hand+Pre:wght@400..700&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Orbitron:wght@400..900&family=Raleway:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing: border-box;
+}
+.interfazvehiculos{
+ width: 80%;
+ height: 100vh;
+}
+.interfazVehiculos__header{
+ display: flex;
+ font-family: "Lato", sans-serif;
+  font-size: 0.9rem;
+  list-style-type: none;
+  font-weight: 600;
+}
+.interfazvehiculos__fondo{
+ display: flex;
+ justify-content: center;  
+ align-items: center;
+}
+
+.interfazVehiculos__title{
+ width: 100%;
+ height: 15vh;
+ padding: 20px;
+ display: flex;
+ justify-content: space-between;
+ 
+}
+
+.title__vehiculos{
+ font-size: 1.9rem;
+}
+.interfazVehiculos__button{
+ width: 15%;  
+ height: 55%;
+ border: none;
+ padding: 5px;
+ border-radius: 10px;
+ font-size: 1.0rem;
+}
+.interfazvehiculos__content{
+padding: 10px;
+width: 100%;
+display: flex;
+gap: 20px;
+flex-wrap: wrap;
+font-family: "Lato", sans-serif;
+font-size: 0.9rem;
+list-style-type: none;
+font-weight: 600;
+height: 75vh;
+}
+.interfazVehiculos__info{
+ width: 100%;
+ height: 10%;
+ display: flex;
+ justify-content: center;
+}
+.interfazVehiculos__cards{
+ padding: 5px;
+ width: 20%;
+ height: 22%;
+ background-color:var(--color--cardvehiculos);
+ display: flex;
+ gap: 10px;
+ flex-direction: column;
+ text-align: center;
+ border-radius: 20px;
+}
+.interfazcard__body{
+ display: flex;
+ flex-direction: column;
+ height: 20%;
+ gap: 10px;
+}
+.interfazcard__button{
+ width: 100%;
+ height: 100%;
+ display: flex;
+ justify-content: center;
+ gap: 10px;
+}
+.interfazcard__buttones{
+  width: 40%;
+  height: 100%;
+  border-radius: 10px;
+  border: none;
+}

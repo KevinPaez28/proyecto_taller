@@ -14,14 +14,15 @@
         <a class="menu__items menu__items--fondoclaro" href="#">Repuestos</a>
         <a class="menu__items menu__items--fondoclaro" href="#">Contacto</a>
       </div>
-      <div class="header__login">
-        <input class="header__input" type="text" placeholder="Usuarios">
-        <input class="header__input" type="password" placeholder="Contraseña">
+      <form class="header__login" novalidate>
+        <input class="header__input" type="text" placeholder="Usuarios" required id="usuario">
+        <input class="header__input" type="password" placeholder="Contraseña" required id="contrasenia">
+        
         <div class="header__button">
-          <a class="button__login button__login--buttongrandre" href="#">Iniciar Sesión</a>
+          <button class="button__login button__login--buttongrandre" href="#">Iniciar Sesión</button>
           <a class="button__login button__login--buttongrandre" href="pages/registrar.html">Registrarse</a>
         </div>
-      </div>
+      </form>
     </div>
   </div>
 
@@ -101,4 +102,5 @@
     </div>
   </div>
 </body>
+<script src="/Javascript/appRegistrar.js" type="module"></script>
 </html>

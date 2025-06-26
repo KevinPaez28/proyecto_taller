@@ -8,11 +8,11 @@
   justify-content: center;
   align-items: center;
   width: 80%;
-  height: 100vh;
+  height: 60vh;
   gap: 10px;
 }
 .loginmecanico__login{
-  width: 30%;
+  width: 40%;
   height: 50%;
   border-radius: 30px;
 }
