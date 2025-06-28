@@ -13,5 +13,6 @@
   --color--buttonheader:#cbcfd2;
   --color--blancocontent:#F5F5F5;
   --color--fondologin: rgba(171, 171, 171, 0.559);
-  --color--cardvehiculos :  rgb(134, 134, 134);
+  --color--cardvehiculos :  rgba(134, 134, 134, 0.651);
+  --color--buttoncards:#6d80a1;
 }
