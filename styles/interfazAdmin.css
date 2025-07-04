@@ -1,11 +1,5 @@
-@import url('interfazIndex.css');
-@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Cardo:ital,wght@0,400;0,700;1,400&family=Comfortaa:wght@300..700&family=Comic+Relief:wght@400;700&family=Edu+NSW+ACT+Hand+Pre:wght@400..700&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Orbitron:wght@400..900&family=Raleway:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
-*{
-  margin:0;
-  padding:0;
-  box-sizing: border-box;
-}
-body{
+@import url('variables.css');
+.bodyAdmin{
   display: flex;
 }
 .lateral{
@@ -16,15 +10,17 @@ body{
   display: flex;
   flex-direction: column;
   gap: 15px;
+  font-family: var(--font--principalateral);
+  font-size: 0.6rem;
+  list-style-type: none; 
+  font-weight:700;
 }
 .lateral__title{
   width: 100%;
   display: flex;
   justify-content: center;
   color: rgb(219, 219, 219);
-  font-family: "Lato", sans-serif;
-  font-size: 0.9rem;
-  list-style-type: none;
+  
 }
 .lateral__menu{
   display: flex;
@@ -54,10 +50,7 @@ color: rgb(25, 25, 26);
   font-size: 18px;
   text-decoration: none;
   color: rgb(255, 255, 255);
-  font-family: "Lato", sans-serif;
-  font-size: 0.9rem;
-  list-style-type: none;
-  font-weight: 600;
+ 
 }
 
 .contentadmin{
@@ -66,6 +59,8 @@ color: rgb(25, 25, 26);
   display: flex;
   padding:20px;
 }
+
+
 .contentadmin__menu {
   display: grid;
   grid-template-areas: 
@@ -80,14 +75,25 @@ color: rgb(25, 25, 26);
   width: 100%;
 }
 
+.contentadmin__menu p {
+  font-family: var(--font--principalateral);
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+.contentadmin__menu h2{
+    font-family: var(--font--principalateral);
+  font-size: 2.0rem;
+  font-weight: 600;
+}
+
 .menu__resumen { 
   grid-area: resumen;
   display: flex;
   gap: 10px;
-  font-family: "Lato", sans-serif;
-  font-size: 0.8rem;
-  list-style-type: none;
+  
  }
+ 
  .menu__items{
   width: 40%;
   height: 90%;
@@ -109,40 +115,75 @@ color: rgb(25, 25, 26);
   text-align: center;
   font-size: 25px;
   color: rgb(7, 7, 7);
-  font-family: "Lato", sans-serif;
-  font-size: 0.8rem;
-  list-style-type: none;
-  font-weight: 700;
+
  }
 
 .menu__calendario { 
   grid-area: calendario;
-  background-color: rgb(192, 190, 190)
-
+  background-color: rgb(192, 190, 190);
+  border-radius: 15px;
  }
  
 .menu__ordenes { 
   grid-area: ordenes; 
-  background-color: rgb(192, 190, 190)
-
+ background-color: rgb(192, 190, 190);
+  border-radius: 15px;
 }
 .menu__ventas { 
   grid-area: ventas;
-  background-color: rgb(192, 190, 190)
- 
+ background-color: rgb(192, 190, 190);
+  border-radius: 15px; 
 }
 .menu__empleados { 
   grid-area: empleados; 
-  background-color: rgb(192, 190, 190)
-
+ background-color: rgb(192, 190, 190);
+  border-radius: 15px;
+    overflow-y: auto;
+   scrollbar-width: none;
+   padding: 0px 20px;
 }
+.Menu__empleados-nombres{
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+  width: 100%;
+  padding: 15px;
+}
+.Menu__empleados-nombres > p{
+    text-align: center;
+}
+
+.Menu__empleados-content{
+  display: flex; 
+  justify-content: space-between;
+}
+.Menu__empleados-content >p {
+  font-size: 1.1rem;
+}
+.Menu__empleados-pnombres{
+  width: 120px ;
+  height: 40px;
+  text-align: center; 
+}
+.Menu__empleados-pcedula{
+  width: 115px ;
+  height: 40px;
+  text-align: center;
+}
+.Menu__empleados-prol{
+  width: 80px ;
+  height: 40px;
+  text-align: center;
+}
+
+
 .menu__reportes { 
   grid-area: reportes; 
-  background-color: rgb(192, 190, 190)
-
+ background-color: rgb(192, 190, 190);
+  border-radius: 15px;
 }
 .menu__notificaciones { 
   grid-area: notificaciones; 
-  background-color: rgb(192, 190, 190)
-
+ background-color: rgb(192, 190, 190);
+  border-radius: 15px;
 }

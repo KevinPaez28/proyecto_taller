@@ -1,4 +1,3 @@
-@import url('login.css');
 @import url('variables.css');
 .registrarse{
  width: 100%;
@@ -7,6 +6,10 @@
  align-items: center;
  justify-content: space-around;
  gap: 10px;
+}
+.bodyContent{
+  display: flex;
+  flex-direction: column;
 }
 .form__card{
   height: 100%;
@@ -34,10 +37,14 @@
   padding: 40px;
   background-color: var(--color--fondologin);
   border-radius:20px ;
+   font-family: var(--font--principalateral);
+  font-size: 1.5¿4rem;
+  font-weight: 500;
 }
 .button{
   display: flex;
   justify-content: center
+
 }
 .button__form{
  width: 40%;
@@ -46,6 +53,9 @@
  border-radius: 50px;
  background-color: var(--color--principal);
  color: rgb(255, 255, 255);
+ font-family:var(--font-buttons);
+ font-size: 1.1rem;
+ font-weight: 600;
 }
 .button__form--diseño_fondo:hover{
   box-shadow: 0 4px 8px rgba(0, 0, 0, 2);
@@ -53,6 +63,6 @@
   transform: translateY(-2px); 
   border: none;
   color: black;
-  font-size: 0.9rem;
-  font-weight: 600;
+   font-size: 1.1rem;
+ font-weight: 600;
 }
