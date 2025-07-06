@@ -40,35 +40,42 @@
  border-radius: 10px;
  font-size: 1.0rem;
 }
-.interfazvehiculos__content{
+.interfazVehiculos__content{
 padding: 10px;
 width: 100%;
 display: flex;
 flex-wrap: wrap;
-font-family: "Lato", sans-serif;
-font-size: 0.9rem;
-list-style-type: none;
-font-weight: 600;
-height: 85vh;
-
+height: 85%;
+overflow-y: auto;
+scrollbar-width: none;
+gap: 25px;
 }
 
-.interfazVehiculos__cards{
+.interfazvehiculos__cards{
  padding: 5px;
- width: 22%;
- height: 27%;
+ width: 18%;
+ height: 32%;
  background-color:var(--color--cardvehiculos);
  border-radius: 15px;
- 
- }
-.interfazcard__body{
- display: flex;
-flex-direction:column;
-justify-content: space-around;
- height: 100%;
- font-size: 1.0rem;
 }
-.interfazcard__button{
+ .interfazvehiculos__body{
+ display: flex;
+ flex-direction:column;
+ width: 100%;
+ height: 100%;
+}
+.interfazvehiculos__info{
+  display: flex;
+  height: 75%;
+  justify-content: space-around;
+}
+.interfazvehiculos__contentCard{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  height: 100%;
+}
+.interfazvehiculos__button{
  width: 100%;
  height: 20%;
  display: flex;
@@ -76,7 +83,7 @@ justify-content: space-around;
  justify-content: center;
  gap: 10px;
 }
-.interfazcard__buttones{
+.interfazvehiculos__buttones{
   width: 40%;
   height: 80%;
   border-radius: 15px;

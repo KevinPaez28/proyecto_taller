@@ -1,16 +1,7 @@
 import { get } from "./api.js";
+import { Vehiculos } from "./Modules/modules.js";
 
-document.addEventListener('DOMContentLoaded', async () =>{
-  try {
-   const vehiculos = await get ('Vehiculos')
-   const vehiculo = vehiculos.find(vehi => vehi.id === idBuscado);
+const vehiculos = await get('Vehiculos');
+const Usuarios = await get('Usuarios');
 
-    if (vehiculo) {
-    document.getElementById("nombre").textContent = vehiculo.nombre;
-    document.getElementById("color").textContent = vehiculo.color;
-    document.getElementById("año").textContent = vehiculo.año;
-    }
-  } catch (error) {
-      console.error('Error al obtener los vehiculos:', error);
-  }
-})
+Vehiculos(vehiculos,Usuarios)
