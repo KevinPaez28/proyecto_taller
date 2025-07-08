@@ -21,14 +21,29 @@
 .form__grupo{
   display: flex;
   justify-content: space-between;
-  gap: 10px;
+  width: 100%;
 }
+.form__label{
+  width: 50%;
+}
+.form__inputtext{
+ width: 50%;
+} 
+.mensaje-error {
+  color: red;
+  font-size: 0.8rem;
+  margin-top: 4px;
+  display: block;
+  font-weight: 500;
+}
+
 .form__input{
   border-radius: 5px;
   height: 25px;
   padding: 3px;
   border: none;
 }
+
 .formulario{
   display: flex;
   flex-direction: column;

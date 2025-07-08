@@ -190,7 +190,7 @@ export const Categorias_Productos = (Categorias, Productos, select, contenedorPa
 
     const nombre = document.createElement("div");
     nombre.classList.add("interfazcategorias__nombre");
-    nombre.textContent = element.nombre_categoria;
+    nombre.textContent = element.nombre;
 
     const divItem = document.createElement("div");
     divItem.classList.add("interfazcategorias__nombre-item");
@@ -259,67 +259,178 @@ export const Categorias_Productos = (Categorias, Productos, select, contenedorPa
 
     const option = document.createElement("option");
     option.value = element.categoria_id;
-    option.textContent = element.nombre_categoria;
+    option.textContent = element.nombre;
     select.appendChild(option);
   });
 };
 
-export const validarCategorias = (data) =>{
- const nombre = data.nombre_categoria.trim()
- 
- const sololetras = /^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+$/;
- if(nombre === "" ){
-    alert("El campo necesita letras")
+export const contarCamposFormulario = (formulario) => {
+  const campos = [...formulario.elements].filter(campo => campo.hasAttribute('required'));
+  return campos.length;
+};
+
+export const validar = (event) => {
+  event.preventDefault();
+
+  const campos = [...event.target.elements].filter((item) => item.hasAttribute('required'));
+  const inputText = campos.filter((campo) =>
+    campo.tagName === 'INPUT' &&
+    (campo.getAttribute('type') === 'text' || campo.getAttribute('type') === 'email')
+  );
+  const inputContrasenia = campos.filter((campo) =>
+    campo.tagName === 'INPUT' && campo.getAttribute('type') === 'password'
+  );
+  const selects = campos.filter((campo) => campo.tagName === 'SELECT');
+  const textAreas = campos.filter((campo) => campo.tagName === 'TEXTAREA');
+
+  let info = {};
+
+  inputText.forEach(campo => {
+    const id = campo.getAttribute('id');
+    if (validarMinimo(campo)) {
+      if (id === 'correo') {
+        if (validarCorreo(campo)) {
+          info[id] = campo.value.toLowerCase();
+        }
+      } else if (id === 'cedula') {
+        if (validarCedula(campo)) {
+          info[id] = campo.value;
+        }
+      } else {
+        info[id] = campo.value;
+      }
+    }
+  });
+
+  // Validar contraseña
+  inputContrasenia.forEach(campo => {
+    if (validarContrasenia(campo)) {
+      info[campo.getAttribute('id')] = campo.value;
+    }
+  });
+
+  // Validar selects
+  selects.forEach(select => {
+    if (select.value === "") {
+      if (select.nextElementSibling) select.nextElementSibling.remove();
+      const mensaje = document.createElement('span');
+      mensaje.textContent = "Debe seleccionar un elemento";
+      mensaje.classList.add("mensaje-error");
+      select.insertAdjacentElement('afterend', mensaje);
+      select.classList.add('border--red');
+    } else {
+      info[select.getAttribute('id')] = select.value;
+    }
+  });
+
+  // Validar textarea 
+  textAreas.forEach(textArea => {
+    if (validarMinimo(textArea)) {
+      info[textArea.getAttribute('id')] = textArea.value;
+    }
+  });
+
+  return info;
+};
+
+export const validarCorreo = (campo) => {
+  const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+  const correo = campo.value.trim();
+  if (!regex.test(correo)) {
+    const mensaje = document.createElement('span');
+    mensaje.textContent = "Correo inválido";
+    mensaje.classList.add("mensaje-error");
+    if (campo.nextElementSibling) campo.nextElementSibling.remove();
+    campo.insertAdjacentElement('afterend', mensaje);
+    campo.classList.add('border--red');
     return false;
- }
- if(!sololetras.test(nombre)){
-    alert("El nombre de la categoria solo debe contener Letras")
-    return false
- }
- return true
+  }
+  return true;
+};
+
+export const validarCedula = (campo) => {
+  const regex = /^\d{6,10}$/; // entre 6 y 10 números
+  const cedula = campo.value.trim();
+  
+  if (!regex.test(cedula)) {
+    if (campo.nextElementSibling) campo.nextElementSibling.remove();
+    const mensaje = document.createElement('span');
+    mensaje.textContent = "La cédula debe tener entre 6 y 10 dígitos.";
+    mensaje.classList.add("mensaje-error");
+    campo.insertAdjacentElement('afterend', mensaje);
+    campo.classList.add('border--red');
+    return false;
+  }
+  return true;
+};
+export const validarContrasenia = (campo) => {
+  const texto = campo.value.trim();
+  const regex = /^(?=.*[A-Z])(?=.*[0-9])(?=.{5,})/; 
+
+  if (!regex.test(texto)) {
+    const mensaje = document.createElement('span');
+    mensaje.textContent = "La contraseña debe tener al menos 5 caracteres, una mayúscula y un número.";3
+    mensaje.classList.add("mensaje-error");
+
+    if (campo.nextElementSibling) campo.nextElementSibling.remove();
+    campo.insertAdjacentElement('afterend', mensaje);
+    campo.classList.add('border--red');
+    return false;
+  }
+
+  return true;
+};
+
+export const limpiar = (campo) => {
+  if (campo.nextElementSibling) campo.nextElementSibling.remove();
+  campo.classList.remove('border--red');
+};
+
+export const validarLetras = (event) => {
+  const tecla = event.key;
+
+  const permitidas = /^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]$/;
+
+  if (!permitidas.test(tecla) && tecla!="Backspace" ) {
+    event.preventDefault();
+  }
+};
+
+export const validarMinimo = (campo) => {
+ const texto = campo.value.trim();
+  let minimo = parseInt(campo.getAttribute('minlength') || campo.getAttribute('min') || "0");
+
+  if (texto.length < minimo) {
+    const span = document.createElement('span');
+    span.textContent = `El campo ${campo.getAttribute('id')} debe tener mínimo ${minimo} caracteres`;
+    span.classList.add("mensaje-error");
+    span.classList.add("mensaje-error");
+    if (campo.nextElementSibling) campo.nextElementSibling.remove();
+    campo.insertAdjacentElement('afterend', span);
+    campo.classList.add('border--red');
+    return false;
+  } else {
+    if (campo.nextElementSibling) campo.nextElementSibling.remove();
+    campo.classList.remove('border--red');
+    return true;
+  }
 }
 
-export const validarProductos = (data) => {
-  const regexNombre = /^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+$/;
-  const regexPrecio = /^\d+(\.\d{1,2})?$/;
-  const regexStock = /^\d+$/;
+export const validarMaximo = (event) => {
+  const campo = event.target;
+  const max = campo.getAttribute('maxlength');
 
-  if (!data.nombre || data.nombre.trim() === "") {
-    alert("Por favor, ingresa el nombre del producto.");
-    return false;
+  if (max && campo.value.length >= max && event.key !== 'Backspace') {
+    event.preventDefault();
   }
-  if (!regexNombre.test(data.nombre.trim())) {
-    alert("El nombre del producto solo puede contener letras y espacios.");
-    return false;
-  }
+};
 
-  if (data.descripcion && data.descripcion.trim().length < 5) {
-    alert("La descripción debe tener al menos 5 caracteres si se proporciona.");
-    return false;
-  }
+export const validarNumeros = (event) => {
+  const tecla = event.key;
 
-  if (!data.precio || data.precio.trim() === "") {
-    alert("Por favor, ingresa el precio del producto.");
-    return false;
-  }
-  if (!regexPrecio.test(data.precio.trim()) || parseFloat(data.precio) <= 0) {
-    alert("El precio debe ser un número positivo válido. Ejemplo: 12 o 12.99");
-    return false;
-  }
+  const permitidas = /^[0-9]$/;
 
-  if (!data.stock || data.stock.trim() === "") {
-    alert("Por favor, ingresa el stock disponible.");
-    return false;
+  if (!permitidas.test(tecla) && tecla!="Backspace") {
+    event.preventDefault();
   }
-  if (!regexStock.test(data.stock.trim()) || parseInt(data.stock) <= 0) {
-    alert("El stock debe ser un número entero positivo.");
-    return false;
-  }
-
-  if (!data.categoria_id || data.categoria_id === "0") {
-    alert("Selecciona una categoría válida del listado.");
-    return false;
-  }
-
-  return true; 
-}
+};

@@ -4,11 +4,17 @@ export const get=async(endpoint)=>{
 }
 
 export const post = async (endpoint, data) => {
-    const response = await fetch(`http://localhost:8080/Proyecto_grado2/api/${endpoint}`,{
+    try {
+    const response = await fetch(`http://localhost:8080/Proyecto_grado2/api/${endpoint}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(data)
     });
+    return response; 
+  } catch (error) {
+    console.error("Error en POST:", error);
+    return null; 
+  }
 }

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
@@ -29,46 +29,69 @@
       <img class="content__img" src="/Img/Moto.png" alt="">
       <p class="content__text">"Bienvenido al taller digital: accede para acelerar el servicio y cuidar tu moto al máximo."</p>
     </div>
-    <div class = "form__card">
-     <form id="formUsuario" class="formulario">
-        <div class="title">
-          <p class="form__text">Register</p>
-        </div>
+     <form id="formUsuario" class="formulario" novalidate>
+          <div class="title">
+            <p class="form__text">Register</p>
+          </div>
 
-        <div class="form__grupo">
-          <label for="nombre">Nombre completo:</label>
-          <input type="text" id="nombre" class="form__input" placeholder="Nombre completo">
-        </div>
+          <div class="form__grupo">
+            <div class="form__label">
+              <label for="nombre">Nombre completo:</label>
+            </div>
+            <div class="form__inputtext">
+              <input type="text" id="nombre" class="form__input" placeholder="Nombre completo" min="5" required>
+            </div>
+          </div>
 
-        <div class="form__grupo">
-          <label for="correo">Correo electrónico:</label>
-          <input type="email" id="correo" class="form__input" placeholder="Correo electrónico">
-        </div>
+          <div class="form__grupo">
+            <div class="form__label">
+              <label for="correo">Correo electrónico:</label>
+            </div>
+            <div class="form__inputtext">
+              <input type="email" id="correo" class="form__input" placeholder="Correo electrónico" required>
+            </div>
+          </div>
 
-        <div class="form__grupo">
-          <label for="telefono">Teléfono:</label>
-          <input type="number" id="telefono" class="form__input" placeholder="Teléfono">
-        </div>
+          <div class="form__grupo">
+            <div class="form__label">
+            <label for="cedula">Cédula:</label>
+            </div>
+            <div class="form__inputtext">
+            <input type="text" id="cedula" class="form__input" placeholder="Cédula" required>
+            </div>
+          </div>
+         
+          <div class="form__grupo">
+            <div class="form__label">
+            <label for="telefono">Teléfono:</label>
+            </div>
+            <div class="form__inputtext">
+            <input type="text" id="telefono" class="form__input" placeholder="Teléfono" minlength="10" maxlength="10" required />
+            </div>
+          </div>  
 
-        <div class="form__grupo">
-          <label for="usuario">Nombre de usuario:</label>
-          <input type="text" id="usuario" class="form__input" placeholder="Nombre Usuario">
-        </div>
+          <div class="form__grupo">
+            <div class="form__label">
+            <label for="usuario">Nombre de usuario:</label>
+            </div>
+            <div class="form__inputtext">
+            <input type="text" id="usuario" class="form__input" placeholder="Nombre Usuario" min="5" required />
+            </div>
+          </div>
 
-        <div class="form__grupo">
-          <label for="contrasena">Contraseña:</label>
-          <input type="password" id="contrasena" class="form__input" placeholder="Contraseña">
-        </div>
+          <div class="form__grupo">
+            <div class="form__label">
+            <label for="contrasena">Contraseña:</label>
+            </div>
+            <div class="form__inputtext">
+            <input type="password" id="contrasena" class="form__input" placeholder="Contraseña"  required/>
+            </div>
+          </div>
 
-        <div class="form__grupo">
-          <label for="cedula">Cédula:</label>
-          <input type="text" id="cedula" class="form__input" placeholder="Cédula">
-        </div>
-
-        <div class="form__grupo button">
-          <button type="submit" class="button__form button__form--diseño_fondo">Registrarse</button>
-        </div>
-      </form>
+          <div class="form__grupo button">
+            <button type="submit" class="button__form button__form--diseño_fondo">Registrarse</button>
+          </div>
+        </form>
     </div>
   </div>
   </div>

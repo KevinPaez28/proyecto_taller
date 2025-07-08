@@ -1,52 +1,112 @@
 import {get} from "./api.js" 
 import {post} from "./api.js" 
-import { Categorias_Productos, validarCategorias, validarProductos } from "./Modules/modules.js"
-
-const formularioCategorias = document.getElementById("categorias")
+import { Categorias_Productos, limpiar, validarMinimo, contarCamposFormulario, validarLetras, validarNumeros} from "./Modules/modules.js"
 
 
-const categorias = await get('Categorias')
-const Productos = await get ('Productos')
-const select = document.querySelector("select")
+
+const categorias = await get('Categorias');
+const productos = await get('Productos');
+
+// DOM elementos de Categorías
+const select = document.querySelector("select");
 const contenedor = document.getElementById("contenedorCategorias");
+const Categoria = document.querySelector("#nombre");
+const formularioCategoria = document.querySelector("#categorias");
 
-formularioCategorias.addEventListener("submit", async (event) =>{
-event.preventDefault();
+// Validar y crear Categorías
+const CrearCategorias = async (event) => {
+  event.preventDefault();
 
- const data = {
-    nombre_categoria: document.getElementById("nombrecategoria").value,
- }
-  if(validarCategorias(data)){
-    try {
-    const crearCategorias = await post('Categorias',data);
-    alert("Categorias Registradas correctamente")
-    document.getElementById("categorias").reset(); 
-  } catch (error) {
-    alert("Error al registrar Categorias: " + error.message); 
-  } 
-  }  
-});
+  const totalRequeridos = contarCamposFormulario(formularioCategoria);
+  let completados = 0;
+  let datos = {};
 
-;
-const formularioproductos = document.getElementById("productos")
-formularioproductos.addEventListener("submit", async (event) =>{
-event.preventDefault();
-   const data = {
-     nombre: document.getElementById("nombreProductos").value,
-     precio: document.getElementById("precioProductos").value,
-     stock: document.getElementById("unidadProductos").value,
-     categoria_id: document.getElementById("rolCategorias").value,
-   }
-   if(validarProductos(data)){
-    try {
-      const crearproductos = await post('Productos',data);
-      alert("Productos Registrados correctamente")
-      document.getElementById("categorias").reset(); 
-    } catch (error) {
-        alert("Error al registrar Categorias: " + error.message); 
-    }  
+  for (let i = 0; i < formularioCategoria.elements.length; i++) {
+    const campo = formularioCategoria.elements[i];
+
+    if (campo.hasAttribute('required')) {
+      if (validarMinimo(campo)) {
+        limpiar(campo);
+        datos[campo.id.toLowerCase()] = campo.value.trim();
+        completados++;
+      }
+    }
   }
+     console.log("🟡 Datos que se enviarán al backend:", datos);
+  if (completados === totalRequeridos) {
+    const respuesta = await post('Categorias', datos);
+    if (respuesta?.ok) {
+      alert("Categoría creada correctamente");
+      formularioCategoria.reset();
+    } else {
+      alert("No se pudo crear la categoría");
+    }
+  } else {
+    alert("Por favor completa todos los campos requeridos.");
+  }
+};
+
+const Nombre = document.querySelector("#Nombre");
+const Precio = document.querySelector("#Precio");
+const Unidad = document.querySelector("#stock");
+const formularioproductos = document.querySelector('#productos');
+
+const CrearProductos = async (event) => {
+  event.preventDefault();
+
+  const totalRequeridos = contarCamposFormulario(formularioproductos);
+  let completados = 0;
+  let datos = {};
+
+  for (let i = 0; i < formularioproductos.elements.length; i++) {
+    const campo = formularioproductos.elements[i];
+
+    if (campo.hasAttribute('required')) {
+      if (validarMinimo(campo)) {
+        limpiar(campo);
+        datos[campo.id.toLowerCase()] = campo.value.trim();
+        completados++;
+      }
+    }
+  }
+
+   
+  if (completados === totalRequeridos) {
+    const respuesta = await post('Productos', datos);
+    if (respuesta?.ok) {
+      alert("Producto creado correctamente");
+      formularioproductos.reset();
+    } else {
+      alert("No se pudo crear el producto");
+    }
+  } else {
+    alert("Por favor completa todos los campos requeridos.");
+  }
+};
+
+Nombre.addEventListener("blur", (event) => {
+  if (validarMinimo(event.target)) limpiar(event.target);
 });
 
-Categorias_Productos(categorias, Productos, select, contenedor);
+Precio.addEventListener("keydown", validarNumeros);
+Precio.addEventListener("blur", (event) => {
+  if (validarMinimo(event.target)) limpiar(event.target);
+});
+
+Unidad.addEventListener("keydown", validarNumeros);
+Unidad.addEventListener("blur", (event) => {
+  if (validarMinimo(event.target)) limpiar(event.target);
+});
+
+
+Categoria.addEventListener("keydown", validarLetras);
+Categoria.addEventListener("blur", (event) => {
+  if (validarMinimo(event.target)) limpiar(event.target);
+});
+
+
+formularioCategoria.addEventListener("submit", CrearCategorias);
+formularioproductos.addEventListener("submit", CrearProductos);
+
+Categorias_Productos(categorias, productos, select, contenedor);
 

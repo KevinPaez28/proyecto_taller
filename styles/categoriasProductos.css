@@ -10,7 +10,7 @@
 .interfazcategorias__header {
   display: flex;
   width: 100%;
-  height: 15%;
+  height: 12%;
   align-items: center;
 }
 
@@ -46,7 +46,7 @@
 
 .interfazcategorias__content {
   width: 100%;
-  height: 85%;
+  height: 88%;
   display: flex;
   flex-direction: row;
 }
@@ -148,7 +148,7 @@
 
 .interfazinsertar__contenedor-categorias {
   width: 100%;
-  height: 30%;
+  height: 33%;
 }
 
 .interfazinsertar__contenedor-productos {
@@ -159,14 +159,14 @@
 .interfazinsertar__formulario-grupo {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 6px;
   height: 40%;
   width: 100%;
   justify-content: center;
 }
 
 .interfazinsertar__formulario-botones {
-  height: 40%;
+  height: 25%;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -188,7 +188,7 @@
 .interfazinsertar__boton {
   border-radius: 10px;
   border: none;
-  height: 40%;
+  height: 70%;
   width: 60%;
   background-color: var(--color--buttoncards);
   color: var(--color--blancocontent);
