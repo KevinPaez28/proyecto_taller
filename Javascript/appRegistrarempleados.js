@@ -1,9 +1,11 @@
 import {get} from "./api.js" 
 import {post} from "./api.js" 
-import {  contarCamposFormulario,validar,validarCorreo,validarMinimo,validarCedula,validarContrasenia,validarLetras,validarNumeros,validarMaximo,limpiar } from "./Modules/modules.js"
+import {  contarCamposFormulario,validar,validarCorreo,validarMinimo,validarCedula,validarContrasenia,validarLetras,validarNumeros,validarMaximo,limpiar,Eliminarusuarios } from "./Modules/modules.js"
 
 const select = document.querySelector("select")
-const roles = await get('Roles')
+const usuarios = await get('Usuarios'); 
+const roles = await get('Roles'); 
+
 roles.forEach(element => {
     const option = document.createElement('option');
     option.setAttribute('value', element.rol_id); 
@@ -47,6 +49,7 @@ const nuevoUsuario = async (event) => {
     if (respuesta?.ok) {
       alert("Usuario creado correctamente");
       formulario.reset();
+      location.reload();
     } else {
       alert("No se pudo crear el usuario");
     }
@@ -97,4 +100,16 @@ contraseña.addEventListener('blur', (event) => {
   if (validarContrasenia(event.target)) limpiar(event.target);
 });
 
+const dialogo = document.getElementById("EliminarUsuario"); 
+const btnEliminarUsuarios = document.getElementById("Eliminar");
+const cerrar = document.getElementById("cerrarDialogo");
+
+btnEliminarUsuarios.addEventListener("click", () => {
+  Eliminarusuarios(usuarios, roles); 
+  dialogo.showModal();
+});
+
+cerrar.addEventListener("click", () => {
+  dialogo.close(); 
+});
 

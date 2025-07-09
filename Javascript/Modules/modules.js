@@ -1,4 +1,4 @@
-import { get } from "../api.js";
+import { get , del, put } from "../api.js";
 
 export const TotalUsuarios =(usuarios,Roles)=>{
  try {
@@ -56,6 +56,177 @@ export const TotalUsuarios =(usuarios,Roles)=>{
     console.error('Error al obtener usuarios:', error);
   }
 }
+
+export const Eliminarusuarios = (usuarios, Roles) => {
+  try {
+    const dialogo = document.getElementById("EliminarUsuario");
+    const contenido = document.querySelector(".EliminarUsuario__Content");
+
+    contenido.innerHTML = "";
+
+    const encabezado = document.createElement("div");
+    encabezado.classList.add("Menu__empleados-header");
+
+    const nombre__content = document.createElement("p");
+    nombre__content.classList.add("Menu__empleados-titulos");
+    nombre__content.textContent = "Nombre";
+
+    const cedula__content = document.createElement("p");
+    cedula__content.classList.add("Menu__empleados-titulos");
+    cedula__content.textContent = "Cédula";
+
+    const telefono = document.createElement("p");
+    telefono.classList.add("Menu__empleados-titulos");
+    telefono.textContent = "Teléfono";
+
+    const usuariotext = document.createElement("p");
+    usuariotext.classList.add("Menu__empleados-titulos");
+    usuariotext.textContent = "Usuario";
+
+    const rol__content = document.createElement("p");
+    rol__content.classList.add("Menu__empleados-titulos");
+    rol__content.textContent = "Rol";
+
+    encabezado.appendChild(nombre__content);
+    encabezado.appendChild(cedula__content);
+    encabezado.appendChild(telefono);
+    encabezado.appendChild(usuariotext);
+    encabezado.appendChild(rol__content);
+
+    contenido.appendChild(encabezado);
+
+    usuarios.forEach(usuario => {
+      const fila = document.createElement("div");
+      fila.classList.add("empleadosContent");
+
+      const datosDiv = document.createElement("div");
+      datosDiv.classList.add("empleadosContent__info");
+
+      const nombre = document.createElement("p");
+      nombre.classList.add("empleadosContent__datos");
+      nombre.textContent = usuario.nombre;
+
+      const cedula = document.createElement("p");
+      cedula.classList.add("empleadosContent__datos");
+      cedula.textContent = usuario.cedula;
+
+      const telefono = document.createElement("p");
+      telefono.classList.add("empleadosContent__datos");
+      telefono.textContent = usuario.telefono;
+
+      const usuarioText = document.createElement("p");
+      usuarioText.classList.add("empleadosContent__datos");
+      usuarioText.textContent = usuario.usuario;
+
+      const rol = document.createElement("p");
+      rol.classList.add("empleadosContent__datos");
+      const encontrado = Roles.find(r => r.rol_id === usuario.rol_id);
+      rol.textContent = encontrado ? encontrado.nombre : "Desconocido";
+
+      datosDiv.appendChild(nombre);
+      datosDiv.appendChild(cedula);
+      datosDiv.appendChild(telefono);
+      datosDiv.appendChild(usuarioText);
+      datosDiv.appendChild(rol);
+
+      const accionesDiv = document.createElement("div");
+      accionesDiv.classList.add("empleadosContent__acciones");
+
+      const btnEditar = document.createElement("button");
+      btnEditar.textContent = "Editar";
+      btnEditar.classList.add("btn-modificar");
+
+      const btnEliminar = document.createElement("button");
+      btnEliminar.textContent = "Eliminar";
+      btnEliminar.classList.add("btn-Eliminar");
+
+      btnEliminar.addEventListener("click", () => {
+        eliminarUsuarioPorId(usuario.usuario_id);
+      });
+
+      btnEditar.addEventListener("click", async () =>{
+        const inputNombre = document.createElement("input");
+        inputNombre.classList.add("empleadosContent__input");
+        inputNombre.value = nombre.textContent;
+        nombre.replaceWith(inputNombre); //Remplazamos el elemento de parrafo 
+
+        const inputCedula = document.createElement("input");
+        inputCedula.classList.add("empleadosContent__input");
+        inputCedula.value = cedula.textContent;
+        cedula.replaceWith(inputCedula);
+
+        const inputTelefono = document.createElement("input");
+        inputTelefono.classList.add("empleadosContent__input");
+        inputTelefono.value = telefono.textContent;
+        telefono.replaceWith(inputTelefono);
+
+        const inputUsuario = document.createElement("input");
+        inputUsuario.classList.add("empleadosContent__input");
+        inputUsuario.value = usuarioText.textContent;
+        usuarioText.replaceWith(inputUsuario);
+
+        btnEditar.textContent = "Guardar";
+        btnEditar.classList.remove("btn-modificar");
+        btnEditar.classList.add("btn-guardar");
+      
+        btnEditar.addEventListener("click", async () => {
+              const nuevoUsuario = {
+                nombre: inputNombre.value.trim(),
+                cedula: inputCedula.value.trim(),
+                telefono: inputTelefono.value.trim(),
+                usuario: inputUsuario.value.trim(),
+                correo: usuario.correo,       
+                contrasena: usuario.contrasena,
+                rol_id: usuario.rol_id
+             };
+         const paramns = usuario.usuario_id;
+         try {
+         const respuesta = await put(`Usuarios/${paramns}`, nuevoUsuario);
+          if (respuesta.ok) {
+           
+           alert(" Usuario actualizado correctamente");
+           location.reload();  
+          } else {
+            alert("No se pudo actualizar el usuario");
+          }
+          } catch (error) {
+            console.error("Error al actualizar usuario:", nuevoUsuario);
+            alert(" Error inesperado al actualizar");
+          }
+        });
+      });
+      accionesDiv.appendChild(btnEditar);
+      accionesDiv.appendChild(btnEliminar);
+
+      fila.appendChild(datosDiv);
+      fila.appendChild(accionesDiv);
+
+      contenido.appendChild(fila);
+    });
+
+    dialogo.showModal();
+
+  } catch (error) {
+    console.error("Error al mostrar usuarios para eliminar:", error);
+  }
+};
+
+export const eliminarUsuarioPorId = async (id) => {
+    try {
+    const respuesta = await del(`Usuarios/${id}`);
+
+    if (respuesta.ok) {
+      alert("Usuario eliminado correctamente");
+
+      location.reload();  
+    } else {
+      alert("No se pudo eliminar el usuario");
+    }
+  } catch (error) {
+    console.error("Error al eliminar usuarios:", error);
+  }
+}
+
 
 export const Vehiculos = (vehiculos,Usuarios) =>{
  
@@ -264,6 +435,8 @@ export const Categorias_Productos = (Categorias, Productos, select, contenedorPa
   });
 };
 
+//VALIDACIONES 
+
 export const contarCamposFormulario = (formulario) => {
   const campos = [...formulario.elements].filter(campo => campo.hasAttribute('required'));
   return campos.length;
@@ -363,6 +536,7 @@ export const validarCedula = (campo) => {
   }
   return true;
 };
+
 export const validarContrasenia = (campo) => {
   const texto = campo.value.trim();
   const regex = /^(?=.*[A-Z])(?=.*[0-9])(?=.{5,})/; 
@@ -403,7 +577,6 @@ export const validarMinimo = (campo) => {
   if (texto.length < minimo) {
     const span = document.createElement('span');
     span.textContent = `El campo ${campo.getAttribute('id')} debe tener mínimo ${minimo} caracteres`;
-    span.classList.add("mensaje-error");
     span.classList.add("mensaje-error");
     if (campo.nextElementSibling) campo.nextElementSibling.remove();
     campo.insertAdjacentElement('afterend', span);

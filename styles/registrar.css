@@ -4,8 +4,8 @@
  height: 90vh;
  display: flex;
  align-items: center;
- justify-content: space-around;
- gap: 10px;
+ justify-content: space-between;
+ padding: 25px;
 }
 .bodyContent{
   display: flex;
@@ -31,7 +31,7 @@
 } 
 .mensaje-error {
   color: red;
-  font-size: 0.8rem;
+  font-size: 0.7rem;
   margin-top: 4px;
   display: block;
   font-weight: 500;
@@ -47,19 +47,18 @@
 .formulario{
   display: flex;
   flex-direction: column;
-  gap: 20px;
-  font-size: 20px;
+  gap: 10px;
   padding: 40px;
   background-color: var(--color--fondologin);
   border-radius:20px ;
    font-family: var(--font--principalateral);
-  font-size: 1.5¿4rem;
+  font-size: 1.4rem;
   font-weight: 500;
 }
 .button{
   display: flex;
-  justify-content: center
-
+  justify-content: center;
+  gap: 10px
 }
 .button__form{
  width: 40%;

@@ -13,19 +13,17 @@ event.preventDefault();
   const usuarios = await get('Usuarios');
 
   const user = usuarios.find((usu) => usu.usuario === usuariovalor);
-    
 
-  if(user.length<1) alert("El usuario no existe");
+  if(user.length < 1) alert("El usuario no existe");
     else{
-        if(user.contraseña==contraseniavalor)
+        if(user.contrasena==contraseniavalor)
         {
           alert("Usuario Iniciado")
         }else {
           alert("El usuario no puede ingresar")
         }
-        
     }
-    if (user.contraseña === contraseniavalor) {
+    if (user.contrasena === contraseniavalor) {
       if (user.rol_id === 1) {
         window.location.href = `/pages/interfazAdmin.html?id=${encodeURIComponent(user.usuario_id)}`;
       }

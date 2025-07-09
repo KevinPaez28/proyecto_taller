@@ -51,7 +51,7 @@
       </div>
   </div>
 
-    <div class = "loginmecanico">
+  <div class = "loginmecanico">
       <div class="contentadmin__fondo ">
         <!-- <img class="imagen__fondo" src="/Img/Logo.png" alt=""> -->
       </div>
@@ -128,10 +128,23 @@
 
           <div class="form__grupo button">
             <button type="submit" class="button__form button__form--diseño_fondo">Registrarse</button>
+            <button type="button" id="Eliminar"class="button__form button__form--diseño_fondo"> Eliminar o editar</button>
           </div>
         </form>
        </div>
-    </div>
+
+    <dialog id="EliminarUsuario" class="dialog__centrado">
+      <div class="EliminarUsuario__title">
+      <p class="Eliminarusuario__text">Eliminar Usuarios</p>
+      </div>
+      <div class="EliminarUsuario__body"> 
+        <div class="EliminarUsuario__Content"></div>     
+      </div>
+       <div class="EliminarUsuario__close">
+          <button class="buttonclose" id="cerrarDialogo">Cerrar</button>
+       </div>
+    </dialog>
+  </div>
 </body>
 <script type="module" src="/Javascript/appRegistrarempleados.js"></script>
 </html>

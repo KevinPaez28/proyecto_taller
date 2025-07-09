@@ -24,13 +24,15 @@
   --color--cardvehiculos :  rgba(158, 152, 152, 0.425);
   --color--buttoncards:#6d80a1;
   --color--buttonProductos:#0d6dfdab;
-  --color--fondotextos:#ece7e7;
-
+  --color--fondotextos:#d0cfcf;
+  --color--buttonEliminar:#bd4d4d;
+  --color--buttonEditado:#8d9c60;
 
 
 
 
   --font--principalateral:"Lato", sans-serif;
   --font--principalContent: 'Inter', sans-serif;
-  --font-Title: "Karla", sans-serif;
+  --font-Title: 'Poppins', sans-serif;
+  --font-body:'Roboto', sans-serif;
 }

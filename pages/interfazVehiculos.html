@@ -56,12 +56,63 @@
       </div>
       <div class="interfazVehiculos__title">
        <p class="title__vehiculos">Vehiculos</p>
+       <div class="title__button">
+        <button id="registrar_vehiculos" class="button__vehiculos">Registrar Vehiculos</button>
+       </div>
       </div>
     </div>
+    <div class="interfazVehiculos__content">
+    </div>
 
-      <div class="interfazVehiculos__content">
-        
+    <dialog id="insertarvehiculos" class="dialog__centrado">
+      <div class="insertarUsuario__title">
+        <p class="insertarUsuario__text">Registro de Vehiculos</p>
       </div>
+      <div class="insertarUsuariobody">
+        <div class="insertarUsuariobody__content">
+          <div class="insertarUsuariobody__info">
+            <div class="formVehiculo">
+              <form class="formVehiculo__form" id="formVehiculo">
+                
+                <div class="formVehiculo__grupo">
+                  <label for="placa" class="formVehiculo__label">Placa:</label>
+                  <input type="text" id="placa" class="formVehiculo__input" placeholder="Placa del vehículo" required maxlength="20">
+                </div>
+
+                <div class="formVehiculo__grupo">
+                  <label for="marca" class="formVehiculo__label">Marca:</label>
+                  <input type="text" id="marca" class="formVehiculo__input" placeholder="Marca del vehículo" required>
+                </div>
+
+                <div class="formVehiculo__grupo">
+                  <label for="modelo" class="formVehiculo__label">Modelo:</label>
+                  <input type="text" id="modelo" class="formVehiculo__input" placeholder="Modelo del vehículo" required>
+                </div>
+
+                <div class="formVehiculo__grupo">
+                  <label for="anio" class="formVehiculo__label">Año:</label>
+                  <input type="number" id="anio" class="formVehiculo__input" placeholder="Año de fabricación" min="1900" max="2100">
+                </div>
+
+                <div class="formVehiculo__grupo">
+                  <label for="usuario_id" class="formVehiculo__label">Usuario:</label>
+                  <input type="text" id="usuario" class="formVehiculo__input" placeholder="Usuario" min="1" max="20">
+                </div>
+
+          
+
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="inserarUsuario__close">
+        <div class="formVehiculo__acciones">
+          <button type="submit" class="formVehiculo__btn">Registrar Vehículo</button>
+          <button class="buttonclose" id="cerrarvehiculos">Cerrar</button>
+        </div>
+      </div>
+    </dialog>
 </body>
  <script type="module" src="/Javascript/appInterfazVehiculos.js"></script>
 </html>

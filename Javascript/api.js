@@ -18,3 +18,25 @@ export const post = async (endpoint, data) => {
     return null; 
   }
 }
+export const put = async (endpoint, info) => {
+  try {
+    return await fetch(`http://localhost:8080/Proyecto_grado2/api/${endpoint}`,{
+        method:'PUT',
+        headers:{
+            'Content-Type':'application/json'
+        },
+        body:JSON.stringify(info)
+    })
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+export const del=async(endpoint)=>{
+  return await fetch(`http://localhost:8080/Proyecto_grado2/api/${endpoint}`,{
+      method:'DELETE',
+      headers:{
+          'Content-Type':'application/json'
+      }
+  })
+}

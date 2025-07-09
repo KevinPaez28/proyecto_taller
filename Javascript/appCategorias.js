@@ -32,12 +32,14 @@ const CrearCategorias = async (event) => {
       }
     }
   }
-     console.log("🟡 Datos que se enviarán al backend:", datos);
+     
   if (completados === totalRequeridos) {
     const respuesta = await post('Categorias', datos);
+
     if (respuesta?.ok) {
       alert("Categoría creada correctamente");
-      formularioCategoria.reset();
+      formularioCategoria.reset();3
+      location.reload();
     } else {
       alert("No se pudo crear la categoría");
     }
@@ -69,13 +71,13 @@ const CrearProductos = async (event) => {
       }
     }
   }
-
    
   if (completados === totalRequeridos) {
     const respuesta = await post('Productos', datos);
     if (respuesta?.ok) {
       alert("Producto creado correctamente");
       formularioproductos.reset();
+      location.reload();
     } else {
       alert("No se pudo crear el producto");
     }
